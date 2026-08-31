@@ -1,0 +1,16 @@
+{
+  "suite": "World IR v0.1 seed equivalence suite",
+  "count": 100,
+  "parts": [
+    {"file": "cases/001-010.json", "first_id": "WIR-EQ-001", "last_id": "WIR-EQ-010", "count": 10},
+    {"file": "cases/011-020.json", "first_id": "WIR-EQ-011", "last_id": "WIR-EQ-020", "count": 10},
+    {"file": "cases/021-030.json", "first_id": "WIR-EQ-021", "last_id": "WIR-EQ-030", "count": 10},
+    {"file": "cases/031-040.json", "first_id": "WIR-EQ-031", "last_id": "WIR-EQ-040", "count": 10},
+    {"file": "cases/041-050.json", "first_id": "WIR-EQ-041", "last_id": "WIR-EQ-050", "count": 10},
+    {"file": "cases/051-060.json", "first_id": "WIR-EQ-051", "last_id": "WIR-EQ-060", "count": 10},
+    {"file": "cases/061-070.json", "first_id": "WIR-EQ-061", "last_id": "WIR-EQ-070", "count": 10},
+    {"file": "cases/071-080.json", "first_id": "WIR-EQ-071", "last_id": "WIR-EQ-080", "count": 10},
+    {"file": "cases/081-090.json", "first_id": "WIR-EQ-081", "last_id": "WIR-EQ-090", "count": 10},
+    {"file": "cases/091-100.json", "first_id": "WIR-EQ-091", "last_id": "WIR-EQ-100", "count": 10}
+  ]
+}
