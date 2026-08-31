@@ -36,7 +36,12 @@ world-ir/
 │  └─ dog-ran.zh.json
 └─ tests/
    ├─ README.md
-   └─ equivalence-100.json
+   ├─ equivalence-100.json
+   └─ cases/
+      ├─ 001-010.json
+      ├─ 011-020.json
+      ├─ ...
+      └─ 091-100.json
 ```
 
 ## Minimal example
@@ -45,7 +50,7 @@ These three utterances:
 
 - `ja`: 犬が走った。
 - `en`: The dog ran.
-- `zh`: 狗跑了。
+- `zh-Hans`: 狗跑了。
 
 should compile to structures whose semantic core is equivalent:
 
