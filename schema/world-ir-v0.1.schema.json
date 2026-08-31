@@ -1,0 +1,204 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://world-ir.example/schema/world-ir-v0.1.schema.json",
+  "title": "World IR v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "world_ir_version",
+    "id",
+    "source",
+    "utterance",
+    "entities",
+    "frames",
+    "links",
+    "fidelity"
+  ],
+  "properties": {
+    "world_ir_version": {"const": "0.1.0"},
+    "id": {"type": "string", "minLength": 1},
+    "source": {"$ref": "#/$defs/source"},
+    "context": {"$ref": "#/$defs/context"},
+    "utterance": {"$ref": "#/$defs/utterance"},
+    "entities": {"type": "array", "items": {"$ref": "#/$defs/entity"}},
+    "frames": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/frame"}},
+    "links": {"type": "array", "items": {"$ref": "#/$defs/link"}},
+    "fidelity": {"$ref": "#/$defs/fidelity"},
+    "extensions": {"type": "object", "additionalProperties": true}
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["text", "language"],
+      "properties": {
+        "text": {"type": "string"},
+        "language": {"type": "string", "minLength": 2, "maxLength": 63},
+        "channel": {"enum": ["text", "speech_transcript", "other"]}
+      }
+    },
+    "context": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "reference_time": {"type": "string", "format": "date-time"},
+        "speaker": {"type": "string"},
+        "addressee": {"type": "string"},
+        "location": {"type": "string"}
+      }
+    },
+    "utterance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind"],
+      "properties": {
+        "kind": {"enum": ["assertion", "question", "directive", "request", "intention", "wish", "exclamation", "fragment"]}
+      }
+    },
+    "entity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "type", "concept"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^e[1-9][0-9]*$"},
+        "type": {"enum": ["person", "animal", "object", "place", "organization", "event", "time", "concept", "substance", "group", "unknown"]},
+        "concept": {"type": "string", "pattern": "^[A-Z][A-Z0-9_.:-]*$"},
+        "names": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["language", "text"],
+            "properties": {
+              "language": {"type": "string"},
+              "text": {"type": "string"}
+            }
+          }
+        },
+        "quantifier": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["kind"],
+          "properties": {
+            "kind": {"enum": ["definite", "indefinite", "all", "some", "none", "numeric", "at_least", "at_most", "exactly", "most", "unspecified"]},
+            "value": {"type": "number"}
+          }
+        },
+        "features": {"type": "object", "additionalProperties": {"type": ["string", "number", "boolean", "null"]}}
+      }
+    },
+    "value": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["entity_ref"],
+          "properties": {
+            "entity_ref": {"type": "string", "pattern": "^(e[1-9][0-9]*|ctx:(speaker|addressee|here|reference_time))$"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["frame_ref"],
+          "properties": {"frame_ref": {"type": "string", "pattern": "^f[1-9][0-9]*$"}}
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["literal"],
+          "properties": {
+            "literal": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["type", "value"],
+              "properties": {
+                "type": {"enum": ["string", "number", "boolean", "date", "datetime", "duration", "symbol"]},
+                "value": {"type": ["string", "number", "boolean"]},
+                "unit": {"type": "string"}
+              }
+            }
+          }
+        }
+      ]
+    },
+    "role": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["role", "value"],
+      "properties": {
+        "role": {"type": "string", "pattern": "^[A-Z][A-Z0-9_:-]*$"},
+        "value": {"$ref": "#/$defs/value"}
+      }
+    },
+    "time": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "anchor": {"enum": ["reference_time", "utterance_time", "absolute", "unspecified"]},
+        "relation": {"enum": ["before", "after", "at", "during", "overlaps", "unspecified"]},
+        "absolute": {"type": "string"},
+        "offset": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["value", "unit"],
+          "properties": {
+            "value": {"type": "number"},
+            "unit": {"enum": ["second", "minute", "hour", "day", "week", "month", "year"]}
+          }
+        }
+      }
+    },
+    "frame": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "frame_type", "predicate", "roles", "polarity", "tense", "aspect", "modality", "certainty"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^f[1-9][0-9]*$"},
+        "frame_type": {"enum": ["event", "state", "relation", "speech_act"]},
+        "predicate": {"type": "string", "pattern": "^[A-Z][A-Z0-9_.:-]*$"},
+        "roles": {"type": "array", "items": {"$ref": "#/$defs/role"}},
+        "polarity": {"enum": ["positive", "negative"]},
+        "tense": {"enum": ["past", "present", "future", "timeless", "unspecified"]},
+        "aspect": {"enum": ["simple", "progressive", "perfect", "habitual", "completed", "ongoing", "unspecified"]},
+        "modality": {"enum": ["asserted", "possible", "probable", "necessary", "obligatory", "permitted", "desired", "intended", "requested", "commanded", "inferred", "reported", "unspecified"]},
+        "certainty": {"type": "number", "minimum": 0.0, "maximum": 1.0},
+        "time": {"$ref": "#/$defs/time"},
+        "source_spans": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["start", "end"],
+            "properties": {
+              "start": {"type": "integer", "minimum": 0},
+              "end": {"type": "integer", "minimum": 0}
+            }
+          }
+        },
+        "features": {"type": "object", "additionalProperties": {"type": ["string", "number", "boolean", "null"]}}
+      }
+    },
+    "link": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "from", "to"],
+      "properties": {
+        "type": {"enum": ["condition", "cause", "before", "after", "equivalent", "contrast", "conjunction", "disjunction", "coreference", "purpose"]},
+        "from": {"type": "string"},
+        "to": {"type": "string"},
+        "features": {"type": "object", "additionalProperties": {"type": ["string", "number", "boolean", "null"]}}
+      }
+    },
+    "fidelity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "lost_features", "notes"],
+      "properties": {
+        "status": {"enum": ["lossless", "lossy", "unknown"]},
+        "lost_features": {"type": "array", "items": {"type": "string"}},
+        "notes": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}
