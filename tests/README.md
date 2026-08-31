@@ -1,6 +1,25 @@
 # World IR v0.1 Seed Evaluation
 
-`equivalence-100.json` is a design-level seed suite, not a gold linguistic corpus.
+The v0.1 seed suite contains **100 design-level cross-lingual test cases**. It is a research seed, not a gold linguistic corpus.
+
+`equivalence-100.json` is the suite manifest. The actual cases are split into ten review-friendly files under `cases/`, with ten cases per file:
+
+```text
+tests/
+├─ README.md
+├─ equivalence-100.json
+└─ cases/
+   ├─ 001-010.json
+   ├─ 011-020.json
+   ├─ 021-030.json
+   ├─ 031-040.json
+   ├─ 041-050.json
+   ├─ 051-060.json
+   ├─ 061-070.json
+   ├─ 071-080.json
+   ├─ 081-090.json
+   └─ 091-100.json
+```
 
 Each case contains:
 
@@ -22,7 +41,7 @@ Each case contains:
 Report at least:
 
 1. schema-valid rate
-2. E1 exact semantic match rate
+2. E1 semantic match rate
 3. E2 loss-detection precision/recall
 4. unsupported-case abstention rate
 5. false-equivalence rate
