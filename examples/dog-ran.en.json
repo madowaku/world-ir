@@ -1,0 +1,48 @@
+{
+  "world_ir_version": "0.1.0",
+  "id": "example-dog-ran-en",
+  "source": {
+    "text": "The dog ran.",
+    "language": "en",
+    "channel": "text"
+  },
+  "utterance": {
+    "kind": "assertion"
+  },
+  "entities": [
+    {
+      "id": "e1",
+      "type": "animal",
+      "concept": "DOG",
+      "quantifier": {
+        "kind": "definite"
+      }
+    }
+  ],
+  "frames": [
+    {
+      "id": "f1",
+      "frame_type": "event",
+      "predicate": "RUN",
+      "roles": [
+        {
+          "role": "AGENT",
+          "value": {
+            "entity_ref": "e1"
+          }
+        }
+      ],
+      "polarity": "positive",
+      "tense": "past",
+      "aspect": "simple",
+      "modality": "asserted",
+      "certainty": 1.0
+    }
+  ],
+  "links": [],
+  "fidelity": {
+    "status": "lossless",
+    "lost_features": [],
+    "notes": []
+  }
+}
