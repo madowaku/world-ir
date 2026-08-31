@@ -1,0 +1,122 @@
+[
+  {
+    "id": "WIR-EQ-001",
+    "category": "simple_fact",
+    "expected_level": "E1",
+    "inputs": [
+      {"language": "ja", "text": "犬が走った。"},
+      {"language": "en", "text": "The dog ran."},
+      {"language": "zh-Hans", "text": "狗跑了。"}
+    ],
+    "target_semantics": "RUN(AGENT=DOG); tense=past",
+    "notes": ""
+  },
+  {
+    "id": "WIR-EQ-002",
+    "category": "simple_fact",
+    "expected_level": "E1",
+    "inputs": [
+      {"language": "ja", "text": "猫が眠った。"},
+      {"language": "en", "text": "The cat slept."},
+      {"language": "zh-Hans", "text": "猫睡了。"}
+    ],
+    "target_semantics": "SLEEP(EXPERIENCER=CAT); tense=past",
+    "notes": ""
+  },
+  {
+    "id": "WIR-EQ-003",
+    "category": "simple_fact",
+    "expected_level": "E1",
+    "inputs": [
+      {"language": "ja", "text": "子どもがドアを開けた。"},
+      {"language": "en", "text": "The child opened the door."},
+      {"language": "zh-Hans", "text": "孩子打开了门。"}
+    ],
+    "target_semantics": "OPEN(AGENT=CHILD,PATIENT=DOOR); tense=past",
+    "notes": ""
+  },
+  {
+    "id": "WIR-EQ-004",
+    "category": "simple_fact",
+    "expected_level": "E1",
+    "inputs": [
+      {"language": "ja", "text": "雨が降っている。"},
+      {"language": "en", "text": "It is raining."},
+      {"language": "zh-Hans", "text": "正在下雨。"}
+    ],
+    "target_semantics": "RAIN; tense=present; aspect=progressive",
+    "notes": ""
+  },
+  {
+    "id": "WIR-EQ-005",
+    "category": "simple_fact",
+    "expected_level": "E1",
+    "inputs": [
+      {"language": "ja", "text": "鳥が飛んだ。"},
+      {"language": "en", "text": "The bird flew."},
+      {"language": "zh-Hans", "text": "鸟飞走了。"}
+    ],
+    "target_semantics": "FLY(AGENT=BIRD); tense=past",
+    "notes": ""
+  },
+  {
+    "id": "WIR-EQ-006",
+    "category": "simple_fact",
+    "expected_level": "E1",
+    "inputs": [
+      {"language": "ja", "text": "先生が本を読んだ。"},
+      {"language": "en", "text": "The teacher read a book."},
+      {"language": "zh-Hans", "text": "老师读了一本书。"}
+    ],
+    "target_semantics": "READ(AGENT=TEACHER,PATIENT=BOOK); tense=past",
+    "notes": ""
+  },
+  {
+    "id": "WIR-EQ-007",
+    "category": "simple_fact",
+    "expected_level": "E1",
+    "inputs": [
+      {"language": "ja", "text": "車が止まった。"},
+      {"language": "en", "text": "The car stopped."},
+      {"language": "zh-Hans", "text": "汽车停了。"}
+    ],
+    "target_semantics": "STOP(THEME=CAR); tense=past",
+    "notes": ""
+  },
+  {
+    "id": "WIR-EQ-008",
+    "category": "simple_fact",
+    "expected_level": "E1",
+    "inputs": [
+      {"language": "ja", "text": "水が沸騰した。"},
+      {"language": "en", "text": "The water boiled."},
+      {"language": "zh-Hans", "text": "水沸腾了。"}
+    ],
+    "target_semantics": "BOIL(THEME=WATER); tense=past",
+    "notes": ""
+  },
+  {
+    "id": "WIR-EQ-009",
+    "category": "simple_fact",
+    "expected_level": "E1",
+    "inputs": [
+      {"language": "ja", "text": "ランプが点いた。"},
+      {"language": "en", "text": "The lamp turned on."},
+      {"language": "zh-Hans", "text": "灯亮了。"}
+    ],
+    "target_semantics": "TURN_ON(THEME=LAMP); tense=past",
+    "notes": ""
+  },
+  {
+    "id": "WIR-EQ-010",
+    "category": "simple_fact",
+    "expected_level": "E1",
+    "inputs": [
+      {"language": "ja", "text": "ベルが鳴った。"},
+      {"language": "en", "text": "The bell rang."},
+      {"language": "zh-Hans", "text": "铃响了。"}
+    ],
+    "target_semantics": "RING(THEME=BELL); tense=past",
+    "notes": ""
+  }
+]
