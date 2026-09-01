@@ -5,6 +5,8 @@ on:
     paths:
       - "world_ir/**"
       - "tests/test_*.py"
+      - "tests/equivalence-100.json"
+      - "tests/cases/**"
       - "examples/**"
       - "schema/world-ir-v0.1.schema.json"
       - "pyproject.toml"
@@ -14,6 +16,8 @@ on:
     paths:
       - "world_ir/**"
       - "tests/test_*.py"
+      - "tests/equivalence-100.json"
+      - "tests/cases/**"
       - "examples/**"
       - "schema/world-ir-v0.1.schema.json"
       - "pyproject.toml"
@@ -35,3 +39,7 @@ jobs:
         run: python -m pip install -e .
       - name: Run unit tests
         run: python -m unittest discover -s tests -p "test_*.py" -v
+      - name: Run 100-case seed evaluator
+        run: |
+          world-ir-eval --json > /tmp/world-ir-eval.json
+          python -c "import json; r=json.load(open('/tmp/world-ir-eval.json', encoding='utf-8')); assert r['summary']['case_count'] == 100; assert r['summary']['false_equivalence']['count'] == 0"
