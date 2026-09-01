@@ -1,0 +1,32 @@
+{
+  "scope": "WIR-EQ-081-WIR-EQ-100",
+  "parent_issue": 5,
+  "human_review": {
+    "ja": {"status": "pending", "issue": 13},
+    "en": {"status": "pending", "issue": 14},
+    "zh-Hans": {"status": "pending", "issue": 15}
+  },
+  "preflight_issue": 16,
+  "cases": [
+    {"id":"WIR-EQ-081","preflight":"ok_boundary","findings":["Pronoun reference is intentionally ambiguous in all three languages; unsupported is defensible pending native review."]},
+    {"id":"WIR-EQ-082","preflight":"ok","findings":["Speaker-bound hungry reading appears aligned across all three languages."]},
+    {"id":"WIR-EQ-083","preflight":"review_needed","findings":["The E2 rationale depends on treating unresolved ctx:here as a fidelity limitation even though v0.1 permits context aliases. Human and spec review should confirm the level."]},
+    {"id":"WIR-EQ-084","preflight":"review_needed","findings":["Japanese is elliptical while English and Chinese lexicalize the farewell/meeting-again reading. E2 is plausible; verify pragmatic equivalence."]},
+    {"id":"WIR-EQ-085","preflight":"ok_boundary","findings":["Deictic referent is unresolved in all languages; E2 is plausible."]},
+    {"id":"WIR-EQ-086","preflight":"ok_boundary","findings":["Gendered but unresolved person reference appears aligned; E2 is plausible."]},
+    {"id":"WIR-EQ-087","preflight":"review_needed","findings":["Control/coreference strength may differ: English 'After eating, he left' strongly favors the same eater and leaver, while Japanese and Chinese zero subjects may permit broader contextual readings."]},
+    {"id":"WIR-EQ-088","preflight":"revision_candidate","findings":["Simplified Chinese explicitly adds 'on the ground' while Japanese and English do not.","Japanese 'コップ', English 'glass', and Chinese '杯子' are close but not perfectly normalized lexical choices. Align the vessel term and location before benchmark sign-off."]},
+    {"id":"WIR-EQ-089","preflight":"ok","findings":["Two-sentence Hanako/she coreference appears aligned across the three inputs."]},
+    {"id":"WIR-EQ-090","preflight":"review_needed","findings":["The former-president status is explicitly expressed in every language and v0.1 entity features can preserve it, so E2 may be unnecessarily conservative. Reconsider E1 vs E2."]},
+    {"id":"WIR-EQ-091","preflight":"review_needed","findings":["English 'I look forward to working with you' is narrower than Japanese よろしくお願いします and assumes a work-like future relation. This may be acceptable as an E2 approximation but must be documented as lossy."]},
+    {"id":"WIR-EQ-092","preflight":"ok_boundary","findings":["The Japanese expression has broader greeting/acknowledgement use than the English gloss; E2 correctly exposes the cultural-pragmatic boundary pending native confirmation."]},
+    {"id":"WIR-EQ-093","preflight":"ok_boundary","findings":["The core waste/regret meaning aligns, while Japanese may carry broader value/avoid-waste nuance; E2 is plausible."]},
+    {"id":"WIR-EQ-094","preflight":"revision_candidate","findings":["English 'Let's eat / I gratefully receive this food.' is not one natural utterance; it is two explanatory glosses joined by a slash.","A single natural English approximation must be chosen, and the Simplified Chinese phrasing needs native confirmation before sign-off."]},
+    {"id":"WIR-EQ-095","preflight":"ok_boundary","findings":["Literal difficulty versus indirect refusal is context-dependent; unsupported is defensible."]},
+    {"id":"WIR-EQ-096","preflight":"ok_boundary","findings":["Sarcastic interpretation depends on context/prosody; unsupported is defensible."]},
+    {"id":"WIR-EQ-097","preflight":"ok","findings":["All three inputs can function as indirect requests rather than literal ability questions; E1 is plausible pending native confirmation."]},
+    {"id":"WIR-EQ-098","preflight":"ok_boundary","findings":["Japanese honorific register adds meaning absent from the English and Chinese inputs; E2 is appropriate pending native confirmation."]},
+    {"id":"WIR-EQ-099","preflight":"review_needed","findings":["The unsupported decision is sensible, but 'multimodal_context' may be a misleading loss label for an emoji/text symbol whose interpretation is pragmatic and context-dependent."]},
+    {"id":"WIR-EQ-100","preflight":"revision_candidate","findings":["English '(Japanese pun.)' and Chinese '（日语双关语）' add metalinguistic explanation that is absent from the Japanese source.","Remove those parenthetical annotations from the utterance inputs; keep wordplay information only in target_semantics/notes. This is a structural benchmark fix, not a native-speaker judgment."]}
+  ]
+}
