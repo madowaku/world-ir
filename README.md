@@ -137,6 +137,19 @@ The checker fails on:
 
 GitHub Actions runs this as the separate **Repository integrity** workflow. Success stays compact; failures emit path-specific diagnostics.
 
+## Native-speaker review status
+
+Issue #5 tracks human review of the seed corpus before it is treated as a benchmark. AI inspection is explicitly separated from native-speaker verification.
+
+Priority review currently covers WIR-EQ-081 through WIR-EQ-100:
+
+- Japanese human native review: **pending** (#13)
+- English human native review: **pending** (#14)
+- Simplified Chinese human native review: **pending** (#15)
+- AI preflight audit: recorded separately in `reviews/native-speaker/081-100.json` (#16)
+
+`reviews/native-speaker/README.md` defines the review protocol, and `reviews/native-speaker/revisions.md` records the reason for every semantic corpus change. AI preflight can suggest or make purely structural corrections, but it MUST NOT mark a language as native-speaker verified.
+
 Run all unit tests:
 
 ```bash
@@ -163,6 +176,10 @@ world-ir/
 │  ├─ evaluation.py
 │  ├─ integrity.py
 │  └─ integrity_cli.py
+├─ reviews/native-speaker/
+│  ├─ README.md
+│  ├─ 081-100.json
+│  └─ revisions.md
 ├─ schema/
 │  └─ world-ir-v0.1.schema.json
 ├─ examples/
