@@ -32,19 +32,57 @@ Each case contains:
 
 ## Expected levels
 
-- `E1`: the v0.1 semantic core should normalize to equivalent meaning.
-- `E2`: the core should be compatible, but the compiler/evaluator should report a meaningful loss or unresolved distinction.
+- `E1`: the v0.1 semantic core should normalize to equivalent meaning without declared loss.
+- `E2`: the shared proposition should be compatible and the compiler/evaluator should explicitly report a meaningful loss or unresolved distinction.
 - `unsupported`: a conforming implementation should refuse to pretend the case is solved.
 
-## Suggested scoring
+## Executable evaluator
 
-Report at least:
+Issue #3 makes the suite executable:
 
-1. schema-valid rate
-2. E1 semantic match rate
-3. E2 loss-detection precision/recall
-4. unsupported-case abstention rate
-5. false-equivalence rate
+```bash
+world-ir-eval
+world-ir-eval --details
+world-ir-eval --json > report.json
+```
+
+The harness validates the manifest before evaluation: exactly 100 contiguous unique IDs, ten referenced case files, and exactly one `ja`, `en`, and `zh-Hans` input per case.
+
+Case outcomes include:
+
+- `pass_e1`
+- `pass_e2`
+- `pass_unsupported`
+- `not_covered`
+- `partial_support`
+- `semantic_mismatch`
+- `unexpected_loss`
+- `invalid_output`
+- `compiler_error`
+- `unsupported_violation`
+- `false_equivalence`
+
+`not_covered` is not treated as success, but it is preferable to invented semantics. The current seed compiler intentionally covers only WIR-EQ-001 and abstains elsewhere.
+
+For E2, the evaluator compares canonical semantic content separately from `fidelity`: equivalent content plus an explicit `lossy`/`unknown` status or named `lost_features` can pass E2. Equivalent content with no loss marker is classified as **false equivalence**.
+
+## Metrics
+
+The report includes:
+
+1. schema-valid rate among emitted documents
+2. full three-language coverage rate
+3. E1 strict and covered semantic match rates
+4. E2 loss-detection precision, strict recall, and covered recall
+5. unsupported-case abstention rate
+6. false-equivalence count, rate, and case IDs
+7. per-case compiler/validation diagnostics
+
+Use `--fail-on-false-equivalence` when false equivalence should make a command fail:
+
+```bash
+world-ir-eval --fail-on-false-equivalence
+```
 
 The most dangerous failure is not “unsupported.” It is **silently declaring two meanings equivalent after discarding a meaningful distinction**.
 
