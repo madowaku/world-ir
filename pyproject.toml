@@ -1,0 +1,18 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "world-ir-reference-compiler"
+version = "0.1.0"
+description = "Minimal executable reference compiler for World IR v0.1"
+requires-python = ">=3.11"
+dependencies = [
+  "jsonschema>=4.23,<5",
+]
+
+[project.scripts]
+world-ir = "world_ir.cli:main"
+
+[tool.setuptools]
+packages = ["world_ir"]
