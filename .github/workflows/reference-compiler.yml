@@ -4,7 +4,7 @@ on:
   pull_request:
     paths:
       - "world_ir/**"
-      - "tests/test_compiler.py"
+      - "tests/test_*.py"
       - "examples/**"
       - "schema/world-ir-v0.1.schema.json"
       - "pyproject.toml"
@@ -13,7 +13,7 @@ on:
     branches: [main]
     paths:
       - "world_ir/**"
-      - "tests/test_compiler.py"
+      - "tests/test_*.py"
       - "examples/**"
       - "schema/world-ir-v0.1.schema.json"
       - "pyproject.toml"
@@ -33,5 +33,5 @@ jobs:
           cache: pip
       - name: Install reference compiler
         run: python -m pip install -e .
-      - name: Run compiler tests
-        run: python -m unittest tests.test_compiler -v
+      - name: Run unit tests
+        run: python -m unittest discover -s tests -p "test_*.py" -v
