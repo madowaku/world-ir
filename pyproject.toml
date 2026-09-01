@@ -13,6 +13,7 @@ dependencies = [
 
 [project.scripts]
 world-ir = "world_ir.cli:main"
+world-ir-eval = "world_ir.eval_cli:main"
 
 [tool.setuptools]
 packages = ["world_ir"]
