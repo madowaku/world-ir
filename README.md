@@ -108,6 +108,35 @@ report = evaluate_seed_suite()
 print(format_text_report(report, details=True))
 ```
 
+## Repository integrity
+
+Issue #4 adds an independent data-integrity gate. It does **not** invoke the compiler or evaluator, so broken fixtures cannot hide behind application code.
+
+Run it locally:
+
+```bash
+world-ir-integrity --root .
+```
+
+A healthy repository prints one compact line:
+
+```text
+repository integrity: OK (schema=1 examples=3 parts=10 cases=100)
+```
+
+The checker fails on:
+
+- an invalid JSON Schema Draft 2020-12 document;
+- any example that is malformed JSON or schema-invalid;
+- a missing or duplicated manifest part;
+- malformed case JSON;
+- missing, duplicated, unexpected, or reordered `WIR-EQ-001` through `WIR-EQ-100` IDs;
+- case files that are not exactly 10 cases each;
+- missing or duplicated `ja`, `en`, or `zh-Hans` inputs;
+- invalid `expected_level` values.
+
+GitHub Actions runs this as the separate **Repository integrity** workflow. Success stays compact; failures emit path-specific diagnostics.
+
 Run all unit tests:
 
 ```bash
@@ -121,6 +150,9 @@ world-ir/
 ├─ README.md
 ├─ SPEC.md
 ├─ pyproject.toml
+├─ .github/workflows/
+│  ├─ reference-compiler.yml
+│  └─ repository-integrity.yml
 ├─ world_ir/
 │  ├─ __init__.py
 │  ├─ __main__.py
@@ -128,7 +160,9 @@ world-ir/
 │  ├─ cli.py
 │  ├─ compiler.py
 │  ├─ eval_cli.py
-│  └─ evaluation.py
+│  ├─ evaluation.py
+│  ├─ integrity.py
+│  └─ integrity_cli.py
 ├─ schema/
 │  └─ world-ir-v0.1.schema.json
 ├─ examples/
@@ -140,6 +174,7 @@ world-ir/
    ├─ test_canonical.py
    ├─ test_compiler.py
    ├─ test_evaluation.py
+   ├─ test_integrity.py
    ├─ equivalence-100.json
    └─ cases/
       ├─ 001-010.json
