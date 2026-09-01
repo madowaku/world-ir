@@ -73,6 +73,41 @@ same_e0 = e0_equivalent(document_a, document_b)
 
 The Japanese, English, and Simplified Chinese `dog-ran` examples are E0-equivalent even though their source text and source-language metadata differ.
 
+## 100-case evaluation harness
+
+Issue #3 connects the compiler to the full seed suite and reports E1, E2, unsupported, coverage, validation, and false-equivalence metrics.
+
+Run a compact report:
+
+```bash
+world-ir-eval
+```
+
+Show non-passing case diagnostics or emit machine-readable JSON:
+
+```bash
+world-ir-eval --details
+world-ir-eval --json > report.json
+```
+
+The evaluator is conservative by design:
+
+- `E1` passes only when all three languages compile to the same canonical semantic content without declared loss.
+- `E2` passes when the shared semantic content is compatible **and** loss/uncertainty is explicitly reported through `fidelity`.
+- `unsupported` passes only when all three languages abstain.
+- an E2 or unsupported case that is silently flattened into one equivalent meaning is marked `false_equivalence`.
+
+The current reference compiler still recognizes only WIR-EQ-001. The harness therefore exposes low capability coverage without converting honest abstention into invented success.
+
+Programmatic API:
+
+```python
+from world_ir import evaluate_seed_suite, format_text_report
+
+report = evaluate_seed_suite()
+print(format_text_report(report, details=True))
+```
+
 Run all unit tests:
 
 ```bash
@@ -91,7 +126,9 @@ world-ir/
 │  ├─ __main__.py
 │  ├─ canonical.py
 │  ├─ cli.py
-│  └─ compiler.py
+│  ├─ compiler.py
+│  ├─ eval_cli.py
+│  └─ evaluation.py
 ├─ schema/
 │  └─ world-ir-v0.1.schema.json
 ├─ examples/
@@ -102,6 +139,7 @@ world-ir/
    ├─ README.md
    ├─ test_canonical.py
    ├─ test_compiler.py
+   ├─ test_evaluation.py
    ├─ equivalence-100.json
    └─ cases/
       ├─ 001-010.json
