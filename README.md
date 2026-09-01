@@ -49,10 +49,34 @@ python -m world_ir "The cat slept." --lang en
 # world-ir: The v0.1 reference compiler does not know this utterance. Refusing to guess semantics.
 ```
 
-Run the compiler tests:
+## Canonicalization and E0 comparison
+
+Issue #2 adds a deterministic semantic comparison form. Canonicalization:
+
+- removes provenance such as `source`, top-level `id`, compiler `extensions`, source spans, entity display names, and fidelity notes;
+- regenerates local entity/frame IDs after semantic sorting;
+- sorts entities, frames, roles, links, and lost-feature lists deterministically;
+- converts numeric `certainty` values into the v0.1 comparison bands;
+- preserves meaning-bearing fields such as polarity, modality, quantification, links, context, and fidelity losses;
+- emits compact deterministic UTF-8 JSON.
+
+Python API:
+
+```python
+from world_ir import canonical_bytes, canonical_json, canonicalize, e0_equivalent
+
+canonical = canonicalize(document)
+text = canonical_json(document)
+digest_input = canonical_bytes(document)
+same_e0 = e0_equivalent(document_a, document_b)
+```
+
+The Japanese, English, and Simplified Chinese `dog-ran` examples are E0-equivalent even though their source text and source-language metadata differ.
+
+Run all unit tests:
 
 ```bash
-python -m unittest tests.test_compiler -v
+python -m unittest discover -s tests -p "test_*.py" -v
 ```
 
 ## Repository layout
@@ -65,6 +89,7 @@ world-ir/
 ├─ world_ir/
 │  ├─ __init__.py
 │  ├─ __main__.py
+│  ├─ canonical.py
 │  ├─ cli.py
 │  └─ compiler.py
 ├─ schema/
@@ -75,6 +100,7 @@ world-ir/
 │  └─ dog-ran.zh.json
 └─ tests/
    ├─ README.md
+   ├─ test_canonical.py
    ├─ test_compiler.py
    ├─ equivalence-100.json
    └─ cases/
