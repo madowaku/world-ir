@@ -22,12 +22,51 @@ World IR v0.1 focuses on:
 
 It also has seed tests for negation, quantification, coreference, deixis, pragmatics, and culturally loaded expressions so that failure boundaries are visible from day one.
 
+## Reference compiler
+
+Issue #1 adds the first executable compiler loop. It is deliberately tiny: v0.1 recognizes only the three `dog-ran` seed utterances and refuses unknown text rather than inventing semantics.
+
+Install the project in editable mode from the repository root:
+
+```bash
+python -m pip install -e .
+```
+
+Compile one utterance:
+
+```bash
+python -m world_ir "犬が走った。" --lang ja
+python -m world_ir "The dog ran." --lang en
+python -m world_ir "狗跑了。" --lang zh-Hans
+```
+
+The CLI validates its output against `schema/world-ir-v0.1.schema.json` by default. Use `--no-validate` only for debugging.
+
+Unknown utterances fail conservatively:
+
+```bash
+python -m world_ir "The cat slept." --lang en
+# world-ir: The v0.1 reference compiler does not know this utterance. Refusing to guess semantics.
+```
+
+Run the compiler tests:
+
+```bash
+python -m unittest tests.test_compiler -v
+```
+
 ## Repository layout
 
 ```text
 world-ir/
 ├─ README.md
 ├─ SPEC.md
+├─ pyproject.toml
+├─ world_ir/
+│  ├─ __init__.py
+│  ├─ __main__.py
+│  ├─ cli.py
+│  └─ compiler.py
 ├─ schema/
 │  └─ world-ir-v0.1.schema.json
 ├─ examples/
@@ -36,6 +75,7 @@ world-ir/
 │  └─ dog-ran.zh.json
 └─ tests/
    ├─ README.md
+   ├─ test_compiler.py
    ├─ equivalence-100.json
    └─ cases/
       ├─ 001-010.json
