@@ -7,6 +7,7 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 LEDGER = ROOT / "reviews" / "native-speaker" / "081-100.json"
+JA_LEDGER = ROOT / "reviews" / "native-speaker" / "ja-081-100.json"
 ALLOWED_HUMAN_STATUSES = {
     "pending",
     "verified",
@@ -27,6 +28,7 @@ class NativeReviewLedgerTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         cls.data = json.loads(LEDGER.read_text(encoding="utf-8"))
+        cls.ja_data = json.loads(JA_LEDGER.read_text(encoding="utf-8"))
 
     def test_priority_scope_has_exactly_081_through_100(self) -> None:
         ids = [case["id"] for case in self.data["cases"]]
@@ -53,6 +55,35 @@ class NativeReviewLedgerTests(unittest.TestCase):
             with self.subTest(case=case["id"]):
                 self.assertIn(case["preflight"], ALLOWED_PREFLIGHT)
                 self.assertTrue(case["findings"])
+
+    def test_japanese_case_ledger_has_exact_scope(self) -> None:
+        self.assertEqual(self.ja_data["language"], "ja")
+        ids = [case["id"] for case in self.ja_data["cases"]]
+        expected = [f"WIR-EQ-{i:03d}" for i in range(81, 101)]
+        self.assertEqual(ids, expected)
+
+    def test_japanese_case_reviews_have_human_provenance(self) -> None:
+        self.assertEqual(self.ja_data["reviewer"], "madowaku")
+        self.assertEqual(self.ja_data["issue"], 13)
+        for case in self.ja_data["cases"]:
+            with self.subTest(case=case["id"]):
+                self.assertIn(case["status"], VERIFIED_STATUSES)
+                self.assertTrue(case["reference"].startswith(
+                    "https://github.com/madowaku/world-ir/issues/13#issuecomment-"
+                ))
+                self.assertTrue(case["judgment"])
+                self.assertTrue(case["follow_up"])
+
+    def test_global_japanese_status_matches_completed_case_review(self) -> None:
+        ja = self.data["human_review"]["ja"]
+        self.assertIn(ja["status"], VERIFIED_STATUSES)
+        self.assertEqual(ja["reviewer"], self.ja_data["reviewer"])
+        self.assertEqual(ja["reviewed_cases"], len(self.ja_data["cases"]))
+        self.assertEqual(len(self.ja_data["cases"]), 20)
+
+    def test_other_priority_languages_remain_pending(self) -> None:
+        self.assertEqual(self.data["human_review"]["en"]["status"], "pending")
+        self.assertEqual(self.data["human_review"]["zh-Hans"]["status"], "pending")
 
 
 if __name__ == "__main__":

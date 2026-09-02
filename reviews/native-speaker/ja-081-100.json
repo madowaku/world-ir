@@ -1,0 +1,149 @@
+{
+  "language": "ja",
+  "scope": "WIR-EQ-081-WIR-EQ-100",
+  "issue": 13,
+  "reviewer": "madowaku",
+  "review_date": "2026-09-02",
+  "cases": [
+    {
+      "id": "WIR-EQ-081",
+      "status": "revised_verified",
+      "reference": "https://github.com/madowaku/world-ir/issues/13#issuecomment-5496402624",
+      "judgment": "「彼」は太郎・次郎・文脈上の第三の男性のいずれも指し得る。素直な読みでは第三者も十分あり得る。",
+      "follow_up": ["Revise target semantics from a two-candidate ambiguity to an unresolved male referent with Taro and Jiro as salient candidates.", "Keep expected_level=unsupported."]
+    },
+    {
+      "id": "WIR-EQ-082",
+      "status": "verified",
+      "reference": "https://github.com/madowaku/world-ir/issues/13#issuecomment-5496449966",
+      "judgment": "自然。現在の空腹状態を表す。",
+      "follow_up": ["Do not mechanically map the surface past/completed form 「空いた」 to past hunger."]
+    },
+    {
+      "id": "WIR-EQ-083",
+      "status": "revised_verified",
+      "reference": "https://github.com/madowaku/world-ir/issues/13#issuecomment-5496491401",
+      "judgment": "「ここに来て。」は自然で、単独では強い命令よりお願い・依頼寄り。",
+      "follow_up": ["Preserve request/directive speech-act information in target semantics.", "Reconsider E1 versus E2 after English and Simplified Chinese review; unresolved ctx:here alone need not imply loss."]
+    },
+    {
+      "id": "WIR-EQ-084",
+      "status": "revised_verified",
+      "reference": "https://github.com/madowaku/world-ir/issues/13#issuecomment-5496513766",
+      "judgment": "「また明日。」は定型的な別れの挨拶。物理的に会うことまでは固定せず、明日の次回接触全般を含み得る。",
+      "follow_up": ["Prefer FAREWELL plus expected next interaction tomorrow over literal SEE_AGAIN.", "Reconsider E1 versus E2 after cross-language review."]
+    },
+    {
+      "id": "WIR-EQ-085",
+      "status": "verified",
+      "reference": "https://github.com/madowaku/world-ir/issues/13#issuecomment-5502674166",
+      "judgment": "自然。「それ」の参照先が未解決でも意味状態として忠実。BELONG_TOは法的所有だけに限定しない。",
+      "follow_up": ["Reconsider E1 versus E2 after cross-language review because unresolved deixis alone need not be semantic loss."]
+    },
+    {
+      "id": "WIR-EQ-086",
+      "status": "revised_verified",
+      "reference": "https://github.com/madowaku/world-ir/issues/13#issuecomment-5502697969",
+      "judgment": "女性代名詞読みが優勢。ただし「彼女」には恋人の語義もあり、この文でも完全には排除できない。",
+      "follow_up": ["Preserve the primary unresolved-female-person reading plus a Japanese lexical-ambiguity residual.", "E2 remains defensible because English she and Chinese 她 lack the girlfriend sense."]
+    },
+    {
+      "id": "WIR-EQ-087",
+      "status": "revised_verified",
+      "reference": "https://github.com/madowaku/world-ir/issues/13#issuecomment-5502708775",
+      "judgment": "素直には「彼が食べ、その彼が出発した」。ただし前半の省略主語と「彼」の同一性は文法的に絶対ではない。",
+      "follow_up": ["Represent same-agent coreference as a strong preference/inference rather than a forced identity.", "Keep E2 for the unresolved-control/coreference boundary."]
+    },
+    {
+      "id": "WIR-EQ-088",
+      "status": "revised_verified",
+      "reference": "https://github.com/madowaku/world-ir/issues/13#issuecomment-5502729634",
+      "judgment": "「それ＝コップ」が圧倒的に自然。ただし特殊な状況を作れば別の割れ物を指す余地は論理的には残る。文はやや回りくどい。",
+      "follow_up": ["Treat CUP coreference as extremely strong but avoid claiming logical impossibility of alternatives.", "Simplified Chinese still needs removal/review of the added ground-location information before E1 sign-off."]
+    },
+    {
+      "id": "WIR-EQ-089",
+      "status": "revised_verified",
+      "reference": "https://github.com/madowaku/world-ir/issues/13#issuecomment-5502744854",
+      "judgment": "「彼女＝花子」がほぼ確実な第一候補だが、前文次第では第三の女性を指す文脈も作れる。",
+      "follow_up": ["Represent Hanako as the preferred coreference rather than an unconditional identity.", "Keep E1 if the same ambiguity profile is confirmed cross-linguistically."]
+    },
+    {
+      "id": "WIR-EQ-090",
+      "status": "revised_verified",
+      "reference": "https://github.com/madowaku/world-ir/issues/13#issuecomment-5502806860",
+      "judgment": "「講演した」は聴衆に向けた正式な話で、単なる SPEAK より狭い。元大統領という地位情報も意味に必須。",
+      "follow_up": ["Revise target predicate toward a formal speech/lecture event rather than generic SPEAK.", "Reconsider E1 versus E2 after confirming speech/演讲 alignment in English and Chinese."]
+    },
+    {
+      "id": "WIR-EQ-091",
+      "status": "revised_verified",
+      "reference": "https://github.com/madowaku/world-ir/issues/13#issuecomment-5502857548",
+      "judgment": "「よろしくお願いします。」は文脈により具体的内容が大きく変わる。好意的な関与・配慮・協力を期待する定型表現だが、その関与内容は未確定。",
+      "follow_up": ["Keep E2.", "Refine target semantics to preserve relational politeness with context-dependent specific intent.", "English working-with-you gloss is narrower than the Japanese expression."]
+    },
+    {
+      "id": "WIR-EQ-092",
+      "status": "revised_verified",
+      "reference": "https://github.com/madowaku/world-ir/issues/13#issuecomment-5502917738",
+      "judgment": "「お疲れさまです。」はかなり挨拶として使う。実際の疲労や努力の評価を必ずしも表さない。",
+      "follow_up": ["Keep E2.", "Preserve greeting/acknowledgement/farewell/effort-appreciation functions as context-dependent rather than asserting TIRED(addressee)."]
+    },
+    {
+      "id": "WIR-EQ-093",
+      "status": "revised_verified",
+      "reference": "https://github.com/madowaku/world-ir/issues/13#issuecomment-5502967360",
+      "judgment": "「もったいない」は無駄だけでなく、価値や可能性が十分に活かされていない惜しさも含む。",
+      "follow_up": ["Keep E2.", "Broaden target semantics beyond waste to unrealized/preserved value and regret nuance."]
+    },
+    {
+      "id": "WIR-EQ-094",
+      "status": "revised_verified",
+      "reference": "https://github.com/madowaku/world-ir/issues/13#issuecomment-5503221987",
+      "judgment": "「いただきます。」単独では食べ始めますの合図が強い。文化的な感謝・受領の背景もある。",
+      "follow_up": ["Keep E2.", "Model a conventional pre-meal start speech act with gratitude/receipt nuance.", "English slash-separated gloss must be replaced by one natural utterance after English native review."]
+    },
+    {
+      "id": "WIR-EQ-095",
+      "status": "verified",
+      "reference": "https://github.com/madowaku/world-ir/issues/13#issuecomment-5503241472",
+      "judgment": "依頼への返答では「それは無理です」の柔らかい表現としてよく使う。一方、文脈次第で文字どおりの難易度評価にもなる。",
+      "follow_up": ["Keep expected_level=unsupported.", "Treat 「ちょっと」 as a possible mitigation/politeness marker rather than always a literal small degree."]
+    },
+    {
+      "id": "WIR-EQ-096",
+      "status": "revised_verified",
+      "reference": "https://github.com/madowaku/world-ir/issues/13#issuecomment-5503255509",
+      "judgment": "失敗直後なら嫌味・皮肉をまず疑うが、文脈次第で本気の称賛も残る。「さすが」には期待どおり・評判どおりの含みがある。",
+      "follow_up": ["Keep expected_level=unsupported.", "Preserve prior-expectation/reputation consistency as a Japanese lexical-pragmatic residual; do not force sarcasm=true."]
+    },
+    {
+      "id": "WIR-EQ-097",
+      "status": "verified",
+      "reference": "https://github.com/madowaku/world-ir/issues/13#issuecomment-5503277641",
+      "judgment": "意味は普通に「塩を渡して」。能力を知りたい質問としてはまず読まない。",
+      "follow_up": ["Keep E1.", "Preserve interrogative/indirect realization if the representation supports pragmatic form metadata."]
+    },
+    {
+      "id": "WIR-EQ-098",
+      "status": "verified",
+      "reference": "https://github.com/madowaku/world-ir/issues/13#issuecomment-5503283526",
+      "judgment": "「お見えになりました」は先生を明確に立てる尊敬表現で、「先生が来ました。」より社会関係・敬意の情報が多い。",
+      "follow_up": ["Keep E2.", "Represent honorific register as respect directed toward the teacher, not generic surface politeness only."]
+    },
+    {
+      "id": "WIR-EQ-099",
+      "status": "revised_verified",
+      "reference": "https://github.com/madowaku/world-ir/issues/13#issuecomment-5503648024",
+      "judgment": "👍 は「了解」「いいね」が主要で、「賛成」もある。冷たい返事も文脈上はあり得るが主要読みではない。",
+      "follow_up": ["Keep expected_level=unsupported.", "Prefer emoji_pragmatics/contextual_pragmatics over multimodal_context as the boundary label.", "Preserve weighted candidate interpretations rather than fixing acknowledgement only."]
+    },
+    {
+      "id": "WIR-EQ-100",
+      "status": "revised_verified",
+      "reference": "https://github.com/madowaku/world-ir/issues/13#issuecomment-5503657657",
+      "judgment": "「布団が吹っ飛んだ。」は事故事実の報告より、まず古典的なダジャレとして読む。",
+      "follow_up": ["Keep expected_level=unsupported.", "Preserve the source-language sound-based wordplay as essential residual meaning.", "Literal semantics should reflect the stronger forceful blow/fly-away nuance of 「吹っ飛んだ」."]
+    }
+  ]
+}
