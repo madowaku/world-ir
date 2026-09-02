@@ -2,7 +2,7 @@
   "scope": "WIR-EQ-081-WIR-EQ-100",
   "parent_issue": 5,
   "human_review": {
-    "ja": {"status": "pending", "issue": 13},
+    "ja": {"status": "revised_verified", "issue": 13, "reviewer": "madowaku", "reference": "https://github.com/madowaku/world-ir/issues/13", "reviewed_cases": 20},
     "en": {"status": "pending", "issue": 14},
     "zh-Hans": {"status": "pending", "issue": 15}
   },
