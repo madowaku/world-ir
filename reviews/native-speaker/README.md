@@ -24,9 +24,21 @@ For every language in every case, reviewers should answer:
 - `pending`: no human native-speaker review yet
 - `verified`: reviewed and accepted by a human native speaker
 - `revision_requested`: reviewed by a human native speaker and needs a change
-- `revised_verified`: revised and then accepted by a human native speaker
+- `revised_verified`: revised interpretation/metadata has been accepted by a human native speaker; any cross-language seed edit may still wait for the other language reviews
 
 AI preflight uses a separate `preflight` field and never changes human status.
+
+## Case-level provenance
+
+The summary ledger `081-100.json` records language-level progress. Completed human reviews also have a language-specific case ledger with one provenance reference per case.
+
+Current priority ledgers:
+
+- `ja-081-100.json`: Japanese review of WIR-EQ-081 through WIR-EQ-100, completed by madowaku in issue #13
+- English review remains pending in issue #14
+- Simplified Chinese review remains pending in issue #15
+
+A completed case record must contain a human status, a reviewer-backed issue/comment reference, a concise judgment, and any follow-up needed before changing the cross-language seed corpus. This lets the project distinguish **native-language judgment** from **a final cross-language benchmark decision**.
 
 ## Revision log rule
 
@@ -38,6 +50,8 @@ Every semantic change to a seed case MUST record:
 - reason
 - whether the change came from AI preflight or human native review
 - related issue / PR
+
+A review may identify a revision candidate without immediately editing the seed. Cross-language changes should wait when the unresolved question depends on English or Simplified Chinese native judgment.
 
 ## Priority
 
